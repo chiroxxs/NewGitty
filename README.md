@@ -66,8 +66,82 @@ Tools Used
 Microsoft Excel (data source) · Power BI (data modelling, DAX measures, visuals) · Data storytelling
 
 Files
+
 Mobile Sales Data.xlsx: raw dataset
 OneplusProjectDB.pbix: Power BI dashboard
+
+📑 Job-Board Applications Analysis (Jul–Sep 2026)
+
+An analysis of 1,200 job-board applications using PostgreSQL and Power BI. The goal was to answer three business questions and give one recommendation for the next month.
+
+Questions
+Which application source brings the most hires per 100 applications, and does the answer hold for each role category?
+Are applicants who finish all 4 application steps shortlisted more often than those who don't, and by how much?
+How fast do applicants hear back from paid roles compared with unpaid roles, and what share never hear back?
+Key findings
+
+1. Best source: referrals, but not in every role
+
+Source	Applications	Hires	Hires per 100
+Referral	121	         13	       10.7
+Email	    160	         13	        8.1
+Search	  439	         25	        5.7
+College	  208	          7	        3.4
+Social	  257	          6	        2.3
+
+Referrals lead overall, but by role the leader differs: referrals in Design and Marketing, search in Data and Finance, email in Software, and college in Operations. Each role–source group has only 0–7 hires, so these results are indicative only.
+
+2. Finishing all 4 steps strongly relates to being shortlisted
+
+Group	              Applications	Shortlisted	 Shortlist rate
+All 4 steps	            403	          195	         48.4%
+Fewer than 4 steps	    797	           74	          9.3%
+
+The gap is about 39 percentage points and appears in every role. Shortlist rates for 0–3 steps are all between 5.6% and 12.8%; the jump happens only at step 4.
+
+3. Paid roles reply faster and ghost fewer applicants
+
+Group	Applications	Never heard back	Median days to reply	90th percentile
+Paid	    734	            13.1%	               3	                 6
+Unpaid  	466	            29.6%	               7	                14
+
+The gap is large enough to act on.
+
+Recommendation
+
+For next month, show half of new applicants a reminder to finish all 4 steps and compare shortlist rates with the other half. This also tests whether completing the steps causes shortlisting, or only marks keener applicants.
+
+Chart
+
+Shortlist rate: all 4 steps vs fewer
+The chart answers Question 2. The Power BI file is Q2chart.pbix and needs Power BI Desktop (free, Windows only) to open.
+
+Data cleaning
+
+- Removed 6 exact duplicate rows (1,206 → 1,200 applications).
+- Standardised work_mode labels to remote, hybrid and on_site.
+- Labelled 15 blank source values as unknown.
+- Kept blank days_to_first_reply as NULL, meaning no reply. All 234 of these applications were never shortlisted, interviewed or hired.
+- Treated a stipend of 0 as an unpaid role.
+- 
+Things I would not trust
+
+Only 64 applicants were hired, so hire rates by source and role are based on very few cases.
+Finishing all steps and being shortlisted may be linked without one causing the other. The data doesn't show which step happened first.
+"Never heard back" and "unpaid" are assumptions drawn from blank replies and a stipend of 0.
+
+Tools
+
+PostgreSQL, Power BI Desktop, Python (data cleaning).
+
+AI assistance
+
+Claude (Anthropic) helped with parts of this project:
+
+It profiled the raw data, suggested the cleaning steps above.
+It drafted the manager note, from the results of my queries.
+
+The SQL queries that answer the three questions and the Power BI chart are my own work.
 
 
 
