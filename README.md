@@ -75,37 +75,18 @@ OneplusProjectDB.pbix: Power BI dashboard
 An analysis of 1,200 job-board applications using PostgreSQL and Power BI. The goal was to answer three business questions and give one recommendation for the next month.
 
 Questions
-Which application source brings the most hires per 100 applications, and does the answer hold for each role category?
-Are applicants who finish all 4 application steps shortlisted more often than those who don't, and by how much?
-How fast do applicants hear back from paid roles compared with unpaid roles, and what share never hear back?
+
+1. Which application source brings the most hires per 100 applications, and does the answer hold for each role category?
+2. Are applicants who finish all 4 application steps shortlisted more often than those who don't, and by how much?
+3. How fast do applicants hear back from paid roles compared with unpaid roles, and what share never hear back?
+
 Key findings
 
-1. Best source: referrals, but not in every role
+Best source. Referrals bring the most hires, 10.7 per 100 applications (13 hires from 121 applications), followed by email (8.1), search (5.7), college (3.4) and social (2.3). This does not hold in every role: referrals lead in Design and Marketing, search in Data and Finance, email in Software and college in Operations. Each role and source group has only 0–7 hires, so the role-level results are indicative only.
 
-Source	Applications	Hires	Hires per 100
-Referral	121	         13	       10.7
-Email	    160	         13	        8.1
-Search	  439	         25	        5.7
-College	  208	          7	        3.4
-Social	  257	          6	        2.3
+Completing all 4 steps. Applicants who finish all 4 steps were shortlisted 48.4% of the time (195 of 403), against 9.3% (74 of 797) for those who did not. That is a gap of about 39 percentage points, and it appears in every role. Shortlist rates for applicants who completed 0 to 3 steps all sit between 5.6% and 12.8%, so the jump happens only at step 4.
 
-Referrals lead overall, but by role the leader differs: referrals in Design and Marketing, search in Data and Finance, email in Software, and college in Operations. Each role–source group has only 0–7 hires, so these results are indicative only.
-
-2. Finishing all 4 steps strongly relates to being shortlisted
-
-Group	              Applications	Shortlisted	 Shortlist rate
-All 4 steps	            403	          195	         48.4%
-Fewer than 4 steps	    797	           74	          9.3%
-
-The gap is about 39 percentage points and appears in every role. Shortlist rates for 0–3 steps are all between 5.6% and 12.8%; the jump happens only at step 4.
-
-3. Paid roles reply faster and ghost fewer applicants
-
-Group	Applications	Never heard back	Median days to reply	90th percentile
-Paid	    734	            13.1%	               3	                 6
-Unpaid  	466	            29.6%	               7	                14
-
-The gap is large enough to act on.
+Paid vs unpaid roles. Paid roles get a first reply in a median of 3 days, against 7 days for unpaid roles. 13.1% of paid applicants never hear back, compared with 29.6% of unpaid applicants. The gap is large enough to act on.
 
 Recommendation
 
@@ -123,7 +104,7 @@ Data cleaning
 - Labelled 15 blank source values as unknown.
 - Kept blank days_to_first_reply as NULL, meaning no reply. All 234 of these applications were never shortlisted, interviewed or hired.
 - Treated a stipend of 0 as an unpaid role.
-- 
+
 Things I would not trust
 
 Only 64 applicants were hired, so hire rates by source and role are based on very few cases.
@@ -138,7 +119,7 @@ AI assistance
 
 Claude (Anthropic) helped with parts of this project:
 
-It profiled the raw data, suggested the cleaning steps above.
+It profiled the raw data, and suggested the cleaning steps above.
 It drafted the manager note, from the results of my queries.
 
 The SQL queries that answer the three questions and the Power BI chart are my own work.
