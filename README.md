@@ -113,7 +113,7 @@ Finishing all steps and being shortlisted may be linked without one causing the 
 
 Tools
 
-PostgreSQL, Power BI Desktop, Python (data cleaning).
+PostgreSQL, Power BI Desktop, Excel (data cleaning).
 
 AI assistance
 
